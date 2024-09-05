@@ -42,7 +42,7 @@ class FormularioInscricao:
         self.nome_entry.pack(fill=X)
         
         # Campo Email
-        ttk.Label(self.frame, text="Nome").pack(anchor=W, pady=(10, 0))
+        ttk.Label(self.frame, text="Email").pack(anchor=W, pady=(10, 0))
         self.email_entry = ttk.Entry(self.frame, width=50)
         self.email_entry.pack(fill=X)
         
@@ -57,7 +57,7 @@ class FormularioInscricao:
 
         # Checkbox Lembrar dados
         self.lembrar_var = ttk.BooleanVar()
-        self.lembrar_check = ttk.CHECKBUTTON(self.opcoes_frame, text="Lembrar dados?", bootstyle = "round-toggle")
+        self.lembrar_check = ttk.Checkbutton(self.opcoes_frame, text="Lembrar dados?", bootstyle = "round-toggle")
         self.lembrar_check.pack(side=LEFT)
         
         # ComboBox para seleção de temas
