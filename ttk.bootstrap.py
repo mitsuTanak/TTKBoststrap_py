@@ -15,7 +15,7 @@ def resource_path(relative_path):
 class FormularioInscricao:
     def __init__(self, master):
         self.master = master
-        self.master.title("Formulário de Inscrição")
+        self.master.("Formulário de Inscrição")
         self.master.geometry("500x550")
         
         # Configurando o ícone da janela
@@ -79,7 +79,7 @@ class FormularioInscricao:
         
         # Botão Cancelar
         self.cancelar_btn= ttk.Button(self.botoes_frame, text="Cancelar", bootstyle="danger", command=self.cancelar)
-        self.cancelar_btn.pack(side=LEFT, expand=True)
+        self.cancelar_btn.pack(side=RIGHT, expand=True)
         
         # Frame para exibir os dados coletados
         self.dados_frame = ttk.Frame(self.frame)
@@ -89,11 +89,18 @@ class FormularioInscricao:
         self.nome_label = ttk.Label(self.dados_frame, text="", anchor=CENTER)
         self.nome_label.pack(fill=X)
         
+        self.email_label = ttk.Label(self.dados_frame, text="", anchor=CENTER)
+        self.email_label.pack(fill=X)
 
+        self.idade_label = ttk.Label(self.dados_frame, text="", anchor=CENTER)
+        self.idade_label.pack(fill=X)
+
+        self.lembrar_label = ttk.Label(self.dados_frame, text="", anchor=CENTER)
+        self.lembrar_label.pack(fill=X)
 
     def set_icon(self):
-        icon_ico = resource_path("logo.ico")
-        icon_png = resource_path("logo.png")
+        icon_ico = resource_path("imgs/logo.ico")
+        icon_png = resource_path("imgs/logo.png")
         
         if os.path.exists(icon_ico):
             self.master.iconbitmap(icon_ico)
@@ -112,7 +119,22 @@ class FormularioInscricao:
         # Atualizar o status do CheckBox Lembrar dados
         self.lembrar_label.config(text=f"Lembrar dados: {'Sim' if self.lembrar_var.get() else 'Não'}")
     
+    def cancelar(self):
+        # Limpar os campos de entrada e as labels
+        self.nome_entry.delete(0, END) 
+        self.email_entry.delete(0, END) 
+        self.idade_entry.delete(0, END) 
+        self.lembrar_var.set(False) 
 
+        self.nome_label.confing(text="")
+        self.email_label.confing(text="")
+        self.idade_label.confing(text="")
+        self.lembrar_label.confing(text="")
+
+    def mudar_tema(self, event):
+        # Função para mudar o tema quando um novo é selecionado do ComboBox
+        novo_tema = self.tema_var.get()
+        self.style.theme_use(novo_tema)
 
 if __name__ == "__main__":
     root = ttk.Window()
