@@ -15,7 +15,7 @@ def resource_path(relative_path):
 class FormularioInscricao:
     def __init__(self, master):
         self.master = master
-        self.master.("Formulário de Inscrição")
+        self.master.title("Formulário de Inscrição")
         self.master.geometry("500x550")
         
         # Configurando o ícone da janela
@@ -57,8 +57,7 @@ class FormularioInscricao:
 
         # Checkbox Lembrar dados
         self.lembrar_var = ttk.BooleanVar()
-        self.lembrar_check = ttk.CHECKBUTTON(self.opcoes_frame, text="Lembrar dados?",
-        bootstyle = "round-toggle")
+        self.lembrar_check = ttk.CHECKBUTTON(self.opcoes_frame, text="Lembrar dados?", bootstyle = "round-toggle")
         self.lembrar_check.pack(side=LEFT)
         
         # ComboBox para seleção de temas
